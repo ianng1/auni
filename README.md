@@ -1,6 +1,4 @@
-#AUNI WEBSITE README
-
-
+# AUNI WEBSITE README
 
 ## Available Scripts
 
