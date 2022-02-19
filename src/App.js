@@ -19,25 +19,27 @@ function App() {
   return (
     <>
       <div className="Header">
-        <div style={{ margin: 31 }}>
+        <div style={{ marginLeft: 31, width: 30 }}>
           <Button onClick={() => { setShowMenu(!showMenu); console.log(showMenu); }}
             variant="link">
             <ConfigIcon><HiMenu /></ConfigIcon>
           </Button>
         </div>
         <h1 style={{ margin: 27, fontSize: 36 }}>Auni</h1>
-        <div />
+        <div style={{ marginRight: 31, width: 30 }} />
       </div>
       <div className="App" style={{ display: 'flex', height: '100vh' }}>
         <Router>
           {showMenu ? <><Navbar /></> : null}
-          <Routes>
-            <Route exact path='/' exact element={<Signin />} />
-            <Route path='/connect' element={<Connect />} />
-            <Route path='/network' element={<Network />} />
-            <Route path='/profile' element={<Profile />} />
-            <Route path='/settings' element={<Settings />} />
-          </Routes>
+          <view className="container">
+            <Routes>
+              <Route exact path='/' end element={<Signin />} />
+              <Route path='/connect' element={<Connect />} />
+              <Route path='/network' element={<Network />} />
+              <Route path='/profile' element={<Profile />} />
+              <Route path='/settings' element={<Settings />} />
+            </Routes>
+          </view>
         </Router >
       </div>
     </>
