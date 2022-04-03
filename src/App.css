@@ -13,7 +13,7 @@
 .Header {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: stretch;
   align-items: center;
   width: 100%;
   text-align: center;
@@ -60,6 +60,13 @@
     box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 5px 5px rgba(0, 0, 0, .25);
     cursor: not-allowed;
   }
+}
+
+.main-navigation .main-nav ul li.nav-button a {
+  background-color: #ffffff;
+  border: 2px solid #000000;
+  color: #000000;
+  line-height: 35px; /*this number will likely need to be adjusted*/
 }
 
 .sign-out {

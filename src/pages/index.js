@@ -1,5 +1,5 @@
 import '../App.css';
-import { signInWithGoogle, getSignInInfo, signOutFirebase } from '../Firebase';
+import { signInWithGoogle, getSignInInfo, signOutFirebase, stateChanger } from '../Firebase';
 import React, { useState } from 'react';
 
 function Signin() {
@@ -8,7 +8,7 @@ function Signin() {
 
   const updateUser = () => {
     setUser({
-      email: localStorage.getItem("email"),
+      email: localStorage.getItem("email"), 
       name: localStorage.getItem("name"),
       profilePic: localStorage.getItem("profilePic")
     });
@@ -26,7 +26,7 @@ function Signin() {
           <div>
             <h1>Welcome to Auni, {localStorage.getItem("name")}</h1>
             <button onClick={signOut} className="sign-out">Sign out</button>
-            <button onClick={() => { (getSignInInfo()).then(() => { console.log("Sign in info:"); }) }} className="login-with-google-btn">Check Info!</button>
+            <button onClick={() => { getSignInInfo() }} className="login-with-google-btn">Check Info!</button>
           </div>
           :
           <div>

@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, signInWithRedirect } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithRedirect, signInWithPopup } from 'firebase/auth';
+import { getDatabase, ref, set } from "firebase/database";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -15,31 +16,34 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
-firebase.auth().useDeviceLanguage();
-
-
-export const database = getDatabase(app);
 const provider = new GoogleAuthProvider();
+const auth = getAuth(app);
+const db = getDatabase(app);
+
 
 export const signInWithGoogle = async () => {
-  await signInWithRedirect(auth, provider).then((result) => {
+  await signInWithPopup(auth, provider).then((result) => {
 
     const name = result.user.displayName;
     const email = result.user.email;
     const profilePic = result.user.photoURL;
-
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
     localStorage.setItem("name", name);
     localStorage.setItem("email", email);
     localStorage.setItem("profilePic", profilePic);
-
+    const isNew = result.additionalUserInfo.isNewUser;
+    console.log("Is New? " + isNew);
   }).catch((error) => {
-    console.log(error);
+    console.log("Error: " + error);
   });
 }
 
+
 export const getSignInInfo = () => {
+  const auth = getAuth();
   const user = auth.currentUser;
+
   if (user !== null) {
     // The user object has basic properties such as display name, email, etc.
     const displayName = user.displayName;
@@ -58,7 +62,7 @@ export const getSignInInfo = () => {
     console.log("UID: " + uid);
   }
   else {
-    console.log("Yee");
+    console.log("Not signed in!");
   }
 
 }
