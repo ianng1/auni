@@ -1,5 +1,3 @@
 # AUNI WEBSITE README
 
-
-asdfasdfsadfgi
-yee
+yeet
