@@ -31,7 +31,6 @@ function Signin() {
           :
           <div>
             <h1>Welcome to Auni</h1>
-            <button onClick={() => { (signInWithGoogle()).then(() => { console.log("hi!"); updateUser(); }) }} className="login-with-google-btn">Sign in with Google</button>
           </div>
       }
     </div >

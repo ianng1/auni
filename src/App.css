@@ -1,17 +1,24 @@
-.App {
+.MainApp {
   text-align: center;
-  background-color: #F1F1F1;
-  position: fixed;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f1f1f1;
+  position: static;
+  text-align: center;
   width: 100%;
 }
 
 .container {
+  text-align: center;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  position: absolute;
+  text-align: center;
+  width: 100%;
 }
 
 .Header {
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   justify-content: stretch;
   align-items: center;
